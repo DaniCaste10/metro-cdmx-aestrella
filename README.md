@@ -51,11 +51,11 @@ La aplicación no recoge toda la red del metro, sino un **subconjunto de 5 líne
 
 | Línea | Color | Tramo modelado | Estaciones | Tramos |
 |---|---|---|---|---|
-| Línea 1 | `#A2006D` | Observatorio - Balderas | 8 | 7 |
-| Línea 3 | `#B5BD00` | Universidad - Juárez | 14 | 13 |
-| Línea 7 | `#E77C00` | Barranca del Muerto - Polanco | 8 | 7 |
-| Línea 9 | `#A05A2C` | Tacubaya - Lázaro Cárdenas | 5 | 4 |
-| Línea 12 | `#918521` | Mixcoac - Eje Central | 6 | 5 |
+| Línea 1 | Morado | Observatorio - Balderas | 8 | 7 |
+| Línea 3 | Verde lima | Universidad - Juárez | 14 | 13 |
+| Línea 7 | Naranja | Barranca del Muerto - Polanco | 8 | 7 |
+| Línea 9 | Marrón | Tacubaya - Lázaro Cárdenas | 5 | 4 |
+| Línea 12 | Verde oscuro | Mixcoac - Eje Central | 6 | 5 |
 
 ### Datos de cada tramo
 
