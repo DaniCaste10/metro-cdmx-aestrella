@@ -88,16 +88,6 @@ En Zapata el tiempo depende del sentido del cambio. En el resto de estaciones es
 
 ## Funcionamiento
 
-```mermaid
-flowchart TD
-    A["El usuario elige origen y destino"] --> B{"¿Datos válidos?"}
-    B -- No --> C["Mensaje de aviso o de error"]
-    B -- Sí --> D["A* sobre el grafo<br>coste = tiempo de viaje + transbordos"]
-    D --> E["Lista de estaciones de la ruta"]
-    E --> F["Cálculo de distancia, tiempo total y transbordos"]
-    F --> G["Se muestran los resultados y se dibuja el mapa con la ruta en rojo"]
-```
-
 ### El algoritmo A*
 
 A\* recorre el grafo partiendo del origen. En cada paso expande la estación con menor valor de `f(n) = g(n) + h(n)`, donde:
@@ -173,7 +163,6 @@ El grafo es un `nx.Graph` **no dirigido**: los tramos se pueden recorrer en ambo
 ```
 metro-cdmx-aestrella/
 ├── metro_aestrella.py       Programa completo
-├── requirements.txt         Librerías necesarias
 ├── README.md                Esta descripción
 ├── INSTALACION.md           Instalación y ejecución
 └── docs/

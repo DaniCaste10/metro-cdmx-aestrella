@@ -16,7 +16,6 @@ Para conocer cómo funciona el programa (el grafo, el algoritmo A\* y la arquite
 - [Ejecutar la aplicación](#ejecutar-la-aplicación)
 - [Probar la aplicación](#probar-la-aplicación)
 - [Solución de problemas](#solución-de-problemas)
-- [Opcional: usar un entorno virtual](#opcional-usar-un-entorno-virtual)
 
 ## Resumen rápido
 
@@ -121,7 +120,6 @@ cd metro-cdmx-aestrella
 ```
 metro-cdmx-aestrella/
 ├── metro_aestrella.py       Programa completo
-├── requirements.txt         Librerías necesarias
 ├── README.md                Descripción del proyecto
 ├── INSTALACION.md           Esta guía
 └── docs/
@@ -140,7 +138,7 @@ El programa necesita dos librerías: **NetworkX** (el grafo y el algoritmo A\*) 
 pip install networkx matplotlib
 ```
 
-Es equivalente a `pip install -r requirements.txt`, que instala lo que indica el fichero `requirements.txt` del proyecto. Cuando termine, comprueba que se han instalado:
+Cuando termine, comprueba que se han instalado:
 
 ```powershell
 python -c "import networkx, matplotlib; print('Librerías instaladas correctamente')"
@@ -160,8 +158,6 @@ Comprueba que se han instalado:
 ```bash
 python3 -c "import tkinter, networkx, matplotlib; print('Todo instalado correctamente')"
 ```
-
-Los paquetes de `apt` traen versiones algo más antiguas de las librerías (en Ubuntu 24.04, NetworkX 2.8.8), con las que el programa calcula las mismas rutas. Si prefieres las versiones más recientes, usa un [entorno virtual](#opcional-usar-un-entorno-virtual).
 
 ## Ejecutar la aplicación
 
@@ -246,38 +242,7 @@ El tiempo total incluye el de los transbordos. En el segundo caso, por ejemplo, 
 | `ModuleNotFoundError: No module named 'tkinter'` o `'_tkinter'` | Python se instaló sin Tkinter. | **Linux**: `sudo apt install -y python3-tk`. **Windows**: abre el instalador de Python, pulsa **Modify** y marca **tcl/tk and IDLE**. |
 | `'python' no se reconoce como un comando...` o se abre la Microsoft Store (Windows) | Python no está en el PATH o el acceso directo de la Store lo intercepta. | Prueba `py --version`. Si funciona, usa `py` en lugar de `python`. Si no, reinstala Python marcando **Add python.exe to PATH**. También puedes desactivar los alias de la Store en **Configuración → Aplicaciones → Configuración avanzada de aplicaciones → Alias de ejecución de aplicaciones**. |
 | `'pip' no se reconoce como un comando...` (Windows) | `pip` no está en el PATH. | Usa `python -m pip install networkx matplotlib`. |
-| `error: externally-managed-environment` al usar `pip` (Linux) | Ubuntu y Debian no permiten instalar librerías con `pip` en el Python del sistema. | Instala las librerías con `apt`, como se explica en [Instalar las librerías](#instalar-las-librerías), o usa un [entorno virtual](#opcional-usar-un-entorno-virtual). No uses `--break-system-packages`. |
+| `error: externally-managed-environment` al usar `pip` (Linux) | Ubuntu y Debian no permiten instalar librerías con `pip` en el Python del sistema. | Instala las librerías con `apt`, como se explica en [Instalar las librerías](#instalar-las-librerías). No uses `--break-system-packages`. |
 | `_tkinter.TclError: no display name and no $DISPLAY environment variable` | No hay entorno gráfico (SSH, servidor, contenedor). | Ejecuta la aplicación desde una sesión de escritorio. En Windows 11, WSL2 con WSLg también la soporta. |
 | `can't open file '...metro_aestrella.py': [Errno 2] No such file or directory` | Estás en una carpeta incorrecta. | Entra en la carpeta del proyecto con `cd` y comprueba con `dir` (Windows) o `ls` (Linux) que aparece `metro_aestrella.py`. |
 | `pip` o `apt` no pueden descargar las librerías | No hay conexión a Internet o la bloquea un proxy o un cortafuegos. | Comprueba la conexión. `pip` necesita acceso a `https://pypi.org`. |
-
-## Opcional: usar un entorno virtual
-
-Un **entorno virtual** es una carpeta (`.venv`) con una copia aislada de Python en la que se instalan las librerías del proyecto, sin mezclarlas con las del sistema. No es necesario para ejecutar este programa, pero es útil si quieres las **versiones más recientes** de las librerías en Linux o no quieres tocar el Python del sistema.
-
-**Windows (PowerShell)**, desde la carpeta del proyecto:
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python metro_aestrella.py
-```
-
-**Linux**, desde la carpeta del proyecto (necesita además `sudo apt install -y python3-venv python3-tk`):
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python metro_aestrella.py
-```
-
-Cuando el entorno está activo, el prompt de la terminal empieza por `(.venv)`. Cada vez que abras una terminal nueva, hay que **activarlo de nuevo** antes de ejecutar el programa (`.venv\Scripts\Activate.ps1` en Windows y `source .venv/bin/activate` en Linux). Para salir de él, escribe `deactivate`. Para eliminarlo, borra la carpeta `.venv`.
-
-Dos problemas habituales con los entornos virtuales:
-
-| Síntoma o mensaje | Solución |
-|---|---|
-| `La ejecución de scripts está deshabilitada en este sistema` al activar el entorno (PowerShell) | Ejecuta `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, confirma con `S` y vuelve a activarlo. Otra opción es ejecutar directamente `.venv\Scripts\python.exe metro_aestrella.py`. |
-| `The virtual environment was not created successfully because ensurepip is not available` (Linux) | `sudo apt install -y python3-venv` y repite `python3 -m venv .venv`. |
