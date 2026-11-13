@@ -165,6 +165,7 @@ metro-cdmx-aestrella/
 ├── metro_aestrella.py       Programa completo
 ├── README.md                Esta descripción
 ├── INSTALACION.md           Instalación y ejecución
+├── .gitignore
 └── docs/
     └── mapa-ruta.png        Imagen del mapa usada en este documento
 ```
